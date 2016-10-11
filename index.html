@@ -56,16 +56,23 @@
     </style>
 </head>
 <body>            
+    <div>
+        <p>This web application will help to convert raw Fetch XML strings that are downloaded from the Dynamics CRM interface to strings that can be used in your JS/C# code.</p>
+        <p><b>How to use:</b> Give the source Fetch XML string inside the "Raw Fetch XML" area and click on the Convert! button to proceed</p>
+    </div>
         <div class="inline-div">
             <p><b>Raw Fetch XML</b></p>
-            <textarea id="input" cols="100" rows="15" class="inline-txtarea"></textarea>
+            <textarea id="input" cols="80" rows="15" class="inline-txtarea"></textarea>
         </div>        
         <div class="inline-div">
             <p><b>Processed Fetch XML</b></p>
-            <textarea id="output" cols="100" rows="15" class="inline-txtarea"></textarea>
+            <textarea id="output" cols="80" rows="15" class="inline-txtarea"></textarea>
         </div>    
     <div>
         <button value="Convert!" onclick="fetchToString.processFetchInput()">Convert!</button>
+    </div>
+    <div>
+        <p>Developed by Anurag Chatterjee. Contact <a href="mailto:anuragchatterjee92@gmail.com">here</a></p>        
     </div>
 </body>
 </html>
