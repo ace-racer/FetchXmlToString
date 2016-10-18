@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<!--
+Code developed by Anurag Chatterjee. Please feel free to link your blogs/sites to this site.
+If you want to re-use the code to develop your own tool please contact me via email: anuragchatterjee92@gmail.com
+-->
+
+<!DOCTYPE html>
 <html>
 <head>
     <title></title>
@@ -15,8 +20,7 @@
         fetchToString.convertFetchToString = function (fetchXml) {
             var retVal = "";
             if (fetchXml) {
-                // replace hyphens
-                var strValue = fetchXml.replace(new RegExp("-", 'g'), "");
+                var strValue = fetchXml;
 
                 // replace double quotes with single quotes
                 strValue = strValue.replace(new RegExp("\"", 'g'), "'");
@@ -28,7 +32,25 @@
 
                     // check the present string is not an empty string before wrapping it in quotes
                     if (splitStrs[itr].length > 0) {
-                        retVal += "\"" + splitStrs[itr] + "\"+\n";
+                        // fix for valid hyphens getting removed - remove only invalid hyphens which occur at the start
+
+                        var valueToAppend = splitStrs[itr];
+
+                        // if hyphen at the very start
+                        if (valueToAppend[0] == '-') {
+                            valueToAppend = valueToAppend.replace("-", "");
+                        }
+                        else {
+                            // iterate through the split string searching for hyphen at the start
+                            for (var charcount = 1; charcount < valueToAppend.length; charcount++) {
+                                if (valueToAppend[charcount - 1] == ' ' && valueToAppend[charcount] == '-') {
+                                    valueToAppend = valueToAppend.replace("-", "");
+                                    break;
+                                }
+                            }
+                        }
+
+                        retVal += "\"" + valueToAppend + "\"+\n";
                     }
                 }
 
